@@ -10,6 +10,13 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function dashboard()
+    {
+
+        $companies = Company::all(); // Example: Retrieve all companies
+        return view('dashboard', compact('companies'));
+    }
+
     public function index()
     {
         $companies = Company::paginate(10);

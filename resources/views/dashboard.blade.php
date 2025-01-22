@@ -15,3 +15,6 @@
         </div>
     </div>
 </x-app-layout>
+<div>
+    <h1>hello</h1>
+</div>
