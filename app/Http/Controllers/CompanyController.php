@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::paginate(10);
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -20,15 +21,25 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        //
+        // Use the validated data returned from the CompanyRequest class
+        $validated = $request->validated();
+
+        // Handle the logo file if uploaded
+        if ($request->hasFile('logo')) {
+            $validated['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        Company::create($validated);
+
+        return redirect()->route('companies.index')->with('success', 'Company created successfully.');
     }
 
     /**
@@ -36,30 +47,47 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('companies.edit', compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyRequest $request, $id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        // Use the validated data returned from the CompanyRequest class
+        $validated = $request->validated();
+
+        // Handle the logo file if uploaded
+        if ($request->hasFile('logo')) {
+            $validated['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        $company->update($validated);
+
+        return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+        return redirect()->route('companies.index')->with('success', 'Company deleted successfully.');
     }
+
 }

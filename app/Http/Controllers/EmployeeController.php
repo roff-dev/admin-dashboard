@@ -1,65 +1,61 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $employees = Employee::with('company')->paginate(10);
+        return view('employees.index', ['employees' => $employees]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $companies = Company::all();
+        return view('employees.create', compact('companies'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        // Validation is already handled by EmployeeRequest
+        $validated = $request->validated();
+
+        // Create the employee
+        Employee::create($validated);
+
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Employee $employee)
+    public function edit($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $companies = Company::all();
+        return view('employees.edit', compact('employee', 'companies'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Employee $employee)
+    public function update(EmployeeRequest $request, $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+
+        // Validation already handled by EmployeeRequest
+        $validated = $request->validated();
+
+        // Update the employee
+        $employee->update($validated);
+
+        return redirect()->route('employees.index')->with('success', 'Employee updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Employee $employee)
+    public function destroy($id)
     {
-        //
-    }
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Employee $employee)
-    {
-        //
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
 }
