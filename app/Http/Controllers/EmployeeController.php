@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+
+
     public function index()
     {
         $employees = Employee::with('company')->paginate(10);

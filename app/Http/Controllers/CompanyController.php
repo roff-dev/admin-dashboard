@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,8 +14,10 @@ class CompanyController extends Controller
     public function dashboard()
     {
 
-        $companies = Company::all(); // Example: Retrieve all companies
-        return view('dashboard', compact('companies'));
+        $companies = Company::all();
+        $companyCount = Company::count();
+        $employeeCount = Employee::count();
+        return view('dashboard', compact('companies', 'companyCount', 'employeeCount'));
     }
 
     public function index()
