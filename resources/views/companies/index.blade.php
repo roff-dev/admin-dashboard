@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  m-6">
         @foreach ($companies as $company)
             {{-- Wrapping the card with a link --}}
             <a href="{{ route('companies.show', $company) }}" class="block bg-gray-800 shadow rounded-lg p-6 hover:shadow-lg transition">

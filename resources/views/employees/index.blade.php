@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-6">
         @foreach ($employees as $employee)
             <div class="bg-gray-800 shadow rounded-lg p-4 hover:shadow-lg transition">
                 <h3 class="text-gray-200 text-lg font-bold">{{ $employee->first_name }}  {{ $employee->last_name }}</h3>

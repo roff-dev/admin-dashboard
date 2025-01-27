@@ -17,9 +17,9 @@
             {{-- Logo Section --}}
             @if($company->logo)
                 <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}"
-                     class="h-16 w-16 object-cover rounded mr-4">
+                     class="h-24 w-24 object-cover rounded mr-4">
             @else
-                <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center mr-4">
+                <div class="h-24 w-24 bg-gray-200 rounded flex items-center justify-center mr-4">
                     <span class="text-gray-500 text-sm">No Logo</span>
                 </div>
             @endif
