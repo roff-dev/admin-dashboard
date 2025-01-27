@@ -19,7 +19,8 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->company,
             'email' => $this->faker->unique()->safeEmail,
-            'logo' => "https://placehold.co/100x100",
+            'logo' => "https://picsum.photos/seed/" . $this->faker->unique()->uuid . "/100/100",
+            'website' => $this->faker->url,
         ];
     }
 }

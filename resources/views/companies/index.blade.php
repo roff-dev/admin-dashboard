@@ -30,6 +30,9 @@
 
                 {{-- Company Email --}}
                 <p class="text-center text-gray-500 text-sm">{{ $company->email }}</p>
+
+                {{-- Company Website --}}
+                <p class="text-center text-gray-500 text-sm">{{ $company->website }}</p>
             </a>
         @endforeach
             <div class="mt-6">

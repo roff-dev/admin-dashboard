@@ -24,10 +24,11 @@
                 </div>
             @endif
 
-            {{-- Name and Email Section --}}
+            {{-- Name Email and Website Section --}}
             <div class="flex-1 text-center">
                 <h1 class="text-gray-200 text-xl font-bold">{{ $company->name }}</h1>
                 <p class="text-gray-600">{{ $company->email }}</p>
+                <p class="text-gray-600">{{ $company->website }}</p>
             </div>
 
             {{-- Edit/Delete Buttons Section --}}
@@ -60,7 +61,7 @@
                         {{-- Employee Details --}}
                         <h3 class="text-lg font-bold">{{ $employee->first_name }}  {{ $employee->last_name }}</h3>
                         <p class="text-gray-600 text-sm">{{ $employee->email }}</p>
-                        <p class="text-gray-600 text-sm">{{ $employee->phone_number }}</p>
+                        <p class="text-gray-600 text-sm">{{ $employee->phone }}</p>
 
                         {{-- View/Edit/Delete Buttons for Employee --}}
                         <div class="mt-4 space-y-2">
