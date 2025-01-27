@@ -10,7 +10,7 @@
         <div class="mb-6 bg-gray-800 rounded-lg shadow-md p-6 flex items-center">
             {{-- Logo Section --}}
             @if($company->logo)
-                <img src="{{ $company->logo }}" alt="{{ $company->name }}"
+                <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}"
                      class="h-16 w-16 object-cover rounded mr-4">
             @else
                 <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center mr-4">
