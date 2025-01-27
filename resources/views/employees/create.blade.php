@@ -12,7 +12,7 @@
                     <div class="mb-4">
                         <label for="first_name" class="block text-gray-700 font-medium">First Name <span class="text-red-500">*</span></label>
                         <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}"
-                               class="w-full px-4 py-2 border rounded-lg @error('first_name') border-red-500 @enderror" required>
+                               class="w-full px-4 py-2 border rounded-lg @error('first_name') border-red-500 @enderror">
                         @error('first_name')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -22,7 +22,7 @@
                     <div class="mb-4">
                         <label for="last_name" class="block text-gray-700 font-medium">Last Name <span class="text-red-500">*</span></label>
                         <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}"
-                               class="w-full px-4 py-2 border rounded-lg @error('last_name') border-red-500 @enderror" required>
+                               class="w-full px-4 py-2 border rounded-lg @error('last_name') border-red-500 @enderror">
                         @error('last_name')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -48,15 +48,7 @@
                         @enderror
                     </div>
 
-                    {{-- Profile Picture Field --}}
-                    <div class="mb-4">
-                        <label for="profile_picture" class="block text-gray-700 font-medium">Profile Picture</label>
-                        <input type="file" name="profile_picture" id="profile_picture"
-                               class="w-full px-4 py-2 border rounded-lg">
-                        @error('profile_picture')
-                        <p class="text-sm text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+
 
                     {{-- Company Dropdown Field --}}
                     <div class="mb-4">

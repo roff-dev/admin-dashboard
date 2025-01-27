@@ -24,11 +24,12 @@ class EmployeeController extends Controller
 
     public function store(EmployeeRequest $request)
     {
-        // Validation is already handled by EmployeeRequest
-        $validated = $request->validated();
+       // Validation is already handled by EmployeeRequest
+       $validated = $request->validated();
 
         // Create the employee
         Employee::create($validated);
+
 
         return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }
