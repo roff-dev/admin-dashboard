@@ -6,7 +6,7 @@
     </x-slot>
 
 
-    <div class="m-6">
+    <div class="mt-6 mx-auto max-w-7xl">
         <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 mt-4 mb-4">
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Overview</h1>
         </div>
