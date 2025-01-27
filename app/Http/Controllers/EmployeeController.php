@@ -39,7 +39,10 @@ class EmployeeController extends Controller
         $companies = Company::all();
         return view('employees.edit', compact('employee', 'companies'));
     }
-
+    public function show(Employee $employee)
+    {
+        return view('employees.show', compact('employee'));
+    }
     public function update(EmployeeRequest $request, $id)
     {
         $employee = Employee::findOrFail($id);

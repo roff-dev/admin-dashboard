@@ -57,7 +57,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-
+        $company->load('employees'); // Eager load employees
+        return view('companies.show', compact('company'));
     }
 
     /**
