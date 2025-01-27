@@ -6,34 +6,41 @@
     </x-slot>
     <div class="container mx-auto p-6">
         {{-- Company Details --}}
-        <div class="mb-6">
-            <h1 class="text-gray-200 text-2xl font-bold">{{ $company->name }}</h1>
-            <p class="text-gray-600">{{ $company->email }}</p>
 
+        <div class="mb-6 bg-gray-800 rounded-lg shadow-md p-6 flex items-center">
+            {{-- Logo Section --}}
             @if($company->logo)
-                <img src="{{ $company->logo }}"
-                     alt="{{ $company->name }}" class="h-32 w-32 rounded mt-4">
+                <img src="{{ $company->logo }}" alt="{{ $company->name }}"
+                     class="h-16 w-16 object-cover rounded mr-4">
             @else
-                <div class="h-32 w-32 bg-gray-200 rounded mt-4 flex items-center justify-center">
-                    <span class="text-gray-500">No Logo</span>
+                <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center mr-4">
+                    <span class="text-gray-500 text-sm">No Logo</span>
                 </div>
             @endif
 
-            {{-- Edit/Delete Buttons --}}
-            <div class="mt-4">
+            {{-- Name and Email Section --}}
+            <div class="flex-1 text-center">
+                <h1 class="text-gray-200 text-xl font-bold">{{ $company->name }}</h1>
+                <p class="text-gray-600">{{ $company->email }}</p>
+            </div>
+
+            {{-- Edit/Delete Buttons Section --}}
+            <div class="flex flex-col space-y-2">
                 <a href="{{ route('companies.edit', $company) }}"
-                   class="bg-yellow-500 text-white px-4 py-2 rounded text-sm hover:bg-yellow-600">
-                    Edit Company
+                   class="bg-yellow-500 text-white px-4 py-2 rounded text-sm hover:bg-yellow-600 text-center">
+                    Edit
                 </a>
-                <form action="{{ route('companies.destroy', $company) }}" method="POST" class="inline">
+                <form action="{{ route('companies.destroy', $company) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600">
-                        Delete Company
+                    <button type="submit"
+                            class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600 text-center">
+                        Delete
                     </button>
                 </form>
             </div>
         </div>
+
 
         {{-- Employees List --}}
         <h2 class="text-xl font-bold mb-4">Employees</h2>
