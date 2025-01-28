@@ -14,7 +14,8 @@ class CompanyController extends Controller
     public function dashboard()
     {
 
-        $companies = Company::all();
+        // Fetch 3 random companies from the database
+        $companies = Company::inRandomOrder()->take(3)->get();
         $companyCount = Company::count();
         $employeeCount = Employee::count();
         return view('dashboard', compact('companies', 'companyCount', 'employeeCount'));
