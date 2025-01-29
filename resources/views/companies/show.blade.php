@@ -50,7 +50,7 @@
 
 
         {{-- Employees List --}}
-        <h2 class="text-xl font-bold mb-4">Employees</h2>
+        <h2 class="text-gray-200 text-xl font-bold mb-4">Employees</h2>
 
         @if ($company->employees->isEmpty())
             <p class="text-gray-600">No employees for this company yet.</p>
@@ -59,7 +59,7 @@
                 @foreach ($company->employees as $employee)
                     <div class="bg-gray-800 shadow rounded-lg p-4 hover:shadow-lg transition">
                         {{-- Employee Details --}}
-                        <h3 class="text-lg font-bold">{{ $employee->first_name }}  {{ $employee->last_name }}</h3>
+                        <h3 class="text-gray-200 text-lg font-bold">{{ $employee->first_name }}  {{ $employee->last_name }}</h3>
                         <p class="text-gray-600 text-sm">{{ $employee->email }}</p>
                         <p class="text-gray-600 text-sm">{{ $employee->phone }}</p>
 
