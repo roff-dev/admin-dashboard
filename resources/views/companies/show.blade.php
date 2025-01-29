@@ -57,23 +57,7 @@
         @else
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($company->employees as $employee)
-                    <div class="bg-gray-800 shadow rounded-lg p-4 hover:shadow-lg transition">
-                        {{-- Employee Details --}}
-                        <h3 class="text-gray-200 text-lg font-bold">{{ $employee->first_name }}  {{ $employee->last_name }}</h3>
-                        <p class="text-gray-600 text-sm">{{ $employee->email }}</p>
-                        <p class="text-gray-600 text-sm">{{ $employee->phone }}</p>
-
-                        {{-- View/Edit/Delete Buttons for Employee --}}
-                        <div class="mt-4 space-y-2">
-
-                            <a href="{{ route('employees.edit', $employee) }}" class="text-yellow-500">Edit</a>
-                            <form action="{{ route('employees.destroy', $employee) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500">Delete</button>
-                            </form>
-                        </div>
-                    </div>
+                    <x-employee-card :employee="$employee" />
                 @endforeach
             </div>
         @endif
